@@ -1,25 +1,25 @@
-# %% Importar librerías
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
 
-# %% Título
 st.title("Simulación de dispersión de ruido submarino")
 
-# %% Parámetros de entrada
+# Parámetros de entrada
 frecuencia = st.slider("Frecuencia (Hz)", min_value=30, max_value=20000, step=10, value=500)
 distancia_max_km = st.slider("Distancia máxima (km)", min_value=1, max_value=20, step=1, value=10)
 fuente_db = st.slider("Nivel de fuente sonora (dB)", min_value=100, max_value=240, step=1, value=180)
 factor_k = st.slider("Factor geométrico (k)", min_value=10, max_value=20, step=1, value=20)
 umbral_usuario = st.number_input("Umbral de afectación (dB)", min_value=0.0, max_value=200.0, value=120.0, step=1.0)
 
-# %% Cálculo
+# Cálculo
 distancias_km = np.linspace(0.1, distancia_max_km, 500)
 atenuacion = factor_k * np.log10(distancias_km)  # atenuación geométrica
 absorcion = 0.001 * frecuencia * distancias_km   # atenuación por absorción simplificada
+
+# Ajustar nivel de presión sonora desde la fuente, con la atenuación correcta
 nivel_presion = fuente_db - atenuacion - absorcion
 
-# %% Crear la figura de Plotly
+# Crear la figura de Plotly
 fig = go.Figure()
 
 # Añadir la línea del nivel de presión sonora
@@ -35,7 +35,8 @@ fig.update_layout(
     xaxis_title="Distancia (km)",
     yaxis_title="Nivel de presión sonora (dB)",
     showlegend=True,
-    template="plotly_dark"  # Estilo visual oscuro para mejor contraste
+    template="plotly_dark",  # Estilo visual oscuro para mejor contraste
+    yaxis=dict(range=[fuente_db-20, fuente_db])  # Establecer el rango del eje Y para que la fuente no inicie tan alto
 )
 
 # Mostrar el gráfico en Streamlit
