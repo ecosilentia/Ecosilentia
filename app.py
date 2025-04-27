@@ -17,7 +17,7 @@ umbral_dict = {
     "Seres Humanos": 120,
     "Lobos Marinos": 130,
     "Cetáceos": 140,
-    "Peces": 100
+    "Peces": 150
 }
 umbral_usuario = umbral_dict[umbral_categoria]
 
@@ -29,7 +29,7 @@ fuente_emision = st.selectbox("Selecciona la fuente de emisión de ruido",
 fuente_db_dict = {
     "Motor de Embarcaciones": 180,
     "Chancado de Pilotes": 210,
-    "Explosivos": 220,
+    "Explosivos": 250,
     "Ruido de Fondo": 85  # Para ruido de fondo se asigna 85 dB
 }
 fuente_db = fuente_db_dict[fuente_emision]
