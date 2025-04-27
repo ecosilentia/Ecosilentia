@@ -22,13 +22,13 @@ umbral_dict = {
 }
 umbral_usuario = umbral_dict[umbral_categoria]
 
-# Parámetros adicionales
+# Parámetros adicionales para la fuente de emisión de ruido
 fuente_emision = st.selectbox("Selecciona la fuente de emisión de ruido", 
-                              ["Chancado de Pilotes", "Motor de Embarcación", "Aparatos Acústicos Submarinos"])
+                              ["Motor de Embarcaciones", "Chancado de Pilotes", "Explosivos"])
 fuente_db_dict = {
+    "Motor de Embarcaciones": 180,
     "Chancado de Pilotes": 210,
-    "Motor de Embarcación": 180,
-    "Aparatos Acústicos Submarinos": 200
+    "Explosivos": 220
 }
 fuente_db = fuente_db_dict[fuente_emision]
 
@@ -61,3 +61,4 @@ fig.update_layout(
 
 # Mostrar el gráfico en Streamlit
 st.plotly_chart(fig)
+
