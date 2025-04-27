@@ -8,7 +8,6 @@ st.title("Simulación de dispersión de ruido submarino")
 # Parámetros de entrada para las frecuencias, distancias y fuentes
 frecuencia = st.slider("Frecuencia (Hz)", min_value=30, max_value=20000, step=10, value=500)
 distancia_max_km = st.slider("Distancia máxima (km)", min_value=1, max_value=40, step=1, value=10)
-fuente_db = st.slider("Nivel de fuente sonora (dB)", min_value=100, max_value=240, step=1, value=180)
 factor_k = st.slider("Factor geométrico (k)", min_value=10, max_value=20, step=1, value=20)
 
 # Selección de umbral de afectación por categoría (seres humanos, lobos marinos, cetáceos, peces)
@@ -22,13 +21,16 @@ umbral_dict = {
 }
 umbral_usuario = umbral_dict[umbral_categoria]
 
-# Parámetros adicionales para la fuente de emisión de ruido
+# Selección de la fuente de emisión de ruido
 fuente_emision = st.selectbox("Selecciona la fuente de emisión de ruido", 
-                              ["Motor de Embarcaciones", "Chancado de Pilotes", "Explosivos"])
+                              ["Motor de Embarcaciones", "Chancado de Pilotes", "Explosivos", "Ruido de Fondo"])
+
+# Asignación de nivel de presión sonora en función de la fuente seleccionada
 fuente_db_dict = {
     "Motor de Embarcaciones": 180,
     "Chancado de Pilotes": 210,
-    "Explosivos": 220
+    "Explosivos": 220,
+    "Ruido de Fondo": 85  # Para ruido de fondo se asigna 85 dB
 }
 fuente_db = fuente_db_dict[fuente_emision]
 
@@ -61,4 +63,3 @@ fig.update_layout(
 
 # Mostrar el gráfico en Streamlit
 st.plotly_chart(fig)
-
