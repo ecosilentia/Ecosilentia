@@ -36,7 +36,7 @@ fuente_db = fuente_db_dict[fuente_emision]
 distancias_km = np.linspace(0.1, distancia_max_km, 500)
 atenuacion = factor_k * np.log10(distancias_km)  # atenuación geométrica
 absorcion = 0.001 * frecuencia * distancias_km   # atenuación por absorción simplificada
-nivel_presion = fuente_db - atenuacion - absorcion
+nivel_presion = fuente_db - atenuacion - absorcion  # Ajustar el nivel de presión sonora
 
 # Crear la figura de Plotly
 fig = go.Figure()
