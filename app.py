@@ -7,7 +7,7 @@ st.title("Simulación de dispersión de ruido submarino")
 
 # Parámetros de entrada para las frecuencias, distancias y fuentes
 frecuencia = st.slider("Frecuencia (Hz)", min_value=30, max_value=20000, step=10, value=500)
-distancia_max_km = st.slider("Distancia máxima (km)", min_value=1, max_value=20, step=1, value=10)
+distancia_max_km = st.slider("Distancia máxima (km)", min_value=1, max_value=40, step=1, value=10)
 fuente_db = st.slider("Nivel de fuente sonora (dB)", min_value=100, max_value=240, step=1, value=180)
 factor_k = st.slider("Factor geométrico (k)", min_value=10, max_value=20, step=1, value=20)
 
