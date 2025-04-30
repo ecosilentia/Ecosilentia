@@ -44,7 +44,7 @@ nivel_presion = fuente_db - atenuacion - absorcion  # Ajustar el nivel de presi�
 fig = go.Figure()
 
 # Añadir la línea del nivel de presión sonora
-fig.add_trace(go.Scatter(x=distancias_km, y=nivel_presion, mode='lines', name="sonido", line=dict(color='light_blue')))
+fig.add_trace(go.Scatter(x=distancias_km, y=nivel_presion, mode='lines', name="sonido", line=dict(color='lightblue')))
 
 # Añadir la línea del umbral de afectación
 fig.add_trace(go.Scatter(x=[distancias_km[0], distancias_km[-1]], y=[umbral_usuario, umbral_usuario],
