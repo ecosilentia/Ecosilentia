@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 st.title("Simulación de dispersión de ruido submarino")
 
 # Parámetros de entrada para las frecuencias, distancias y fuentes
-frecuencia = st.slider("Frecuencia (Hz)", min_value=20, max_value=20000, step=10, value=500)
+frecuencia = st.slider("Frecuencia (Hz)", min_value=20, max_value=20000, step=10, value=5000)
 distancia_max_km = st.slider("Distancia máxima (km)", min_value=1, max_value=100, step=10, value=10)
 factor_k = st.slider("Factor geométrico (k)", min_value=10, max_value=20, step=1, value=15)
 
@@ -44,11 +44,11 @@ nivel_presion = fuente_db - atenuacion - absorcion  # Ajustar el nivel de presi�
 fig = go.Figure()
 
 # Añadir la línea del nivel de presión sonora
-fig.add_trace(go.Scatter(x=distancias_km, y=nivel_presion, mode='lines', name="sonido", line=dict(color='blue')))
+fig.add_trace(go.Scatter(x=distancias_km, y=nivel_presion, mode='lines', name="sonido", line=dict(color='light_blue')))
 
 # Añadir la línea del umbral de afectación
 fig.add_trace(go.Scatter(x=[distancias_km[0], distancias_km[-1]], y=[umbral_usuario, umbral_usuario],
-                         mode='lines', name=f'umbral ({umbral_usuario} dB)', line=dict(color='red', dash='dash')))
+                         mode='lines', name="umbral", line=dict(color='red', dash='dash')))
 
 # Configurar el layout del gráfico
 fig.update_layout(
